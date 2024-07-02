@@ -1,12 +1,12 @@
 
-function App() {
-  return (
-    <div className="App">
+import Body from "./component/Body";
 
-<h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-          </div>
+function App() {
+
+
+  
+  return (
+    <Body/>
   );
 }
 
