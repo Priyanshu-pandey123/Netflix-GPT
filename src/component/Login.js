@@ -1,15 +1,22 @@
 
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword ,updateProfile} from "firebase/auth";
 import React, { useRef, useState } from 'react'
 import Head from './Head'
 import { validateForm } from '../utils/validate';
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from '../utils/userSlice';
+
 
 const Login = () => {
+   const navigate=useNavigate();
     const [isSignIn ,setIsSignIn] = useState(true);
     const [errorMesage,setErrorMessage]=useState(null);
     const email=useRef(null);
+    const name=useRef(null);
     const password=useRef(null);
+    const dispatch=useDispatch();
     let validate;
 
  const handleClick=()=>{
@@ -29,6 +36,29 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+
+          updateProfile(user, {
+            displayName: name.current.value, 
+            photoURL: "https://github.com/settings/profile"
+          }).then(() => {
+            // Profile updated!
+            const {displayName,email,uid,photoURL}=auth.currentUser;
+            dispatch(addUser({
+              uid:uid,
+                email:email,
+                displayName:displayName,
+                photoURL:photoURL
+            }))
+
+
+           
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+
+
+         
          
           // ...
         })
@@ -45,6 +75,7 @@ const Login = () => {
           .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          
             
           // ...
         })
@@ -74,7 +105,7 @@ const Login = () => {
 
        <h1 className='text-3xl font-bold'>{ isSignIn ? "Sign In " : "Sign Up"}</h1>
 
-       {!isSignIn &&  <input type='text' required placeholder='Full Name'  className='p-4 my-4 w-full bg-slate-300 rounded-lg text-black'/>}
+       {!isSignIn &&  <input type='text' required placeholder='Full Name' ref={name} className='p-4 my-4 w-full bg-slate-300 rounded-lg text-black'/>}
         <input
         ref={email}
          type='text'
@@ -102,3 +133,7 @@ const Login = () => {
 }
 
 export default Login
+
+
+
+
