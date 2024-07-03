@@ -65,7 +65,7 @@ import { LOGO } from "../utils/constant";
        />
 
 
-      <div className='m-2'>
+      <div className='m-2 z-10'>
        
          <button className='h-[50px] w-[70px] bg-red-500  text-black rounded-full z-20'
          onClick={handleSignOut}
