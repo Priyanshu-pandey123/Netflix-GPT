@@ -3,16 +3,16 @@
   import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constant";
 
   
   const Head = () => {
-
-    const navigate=useNavigate();
-  const dispatch=useDispatch();
   
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
+   const user=useSelector((store)=>store.user);
     const handleSignOut=()=>{
     
 
@@ -66,11 +66,13 @@ import { LOGO } from "../utils/constant";
 
 
       <div className='m-2 z-10'>
-       
-         <button className='h-[50px] w-[70px] bg-red-500  text-black rounded-full z-20'
-         onClick={handleSignOut}
-         
-         >Sign Out</button>
+      {
+        user &&
+        <button className='h-[50px] w-[70px] bg-red-500  text-black rounded-full z-20'
+        onClick={handleSignOut}
+        
+        >Sign Out</button>
+      }
       </div>
 
 
