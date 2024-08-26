@@ -10,3 +10,12 @@ export const LOGO="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-89723
   
 
 export const IMAGE_CDN='https://image.tmdb.org/t/p/w500/';
+
+export const SUPPORTED_LANGUAGE=[{indentifier:"en",name:"English"},
+  {indentifier:"hindi",name:"Hindi"},
+  {indentifier:"spanish",name:"Spanish"}
+
+]
+
+export const GPT_APIKEY="";
+                          
