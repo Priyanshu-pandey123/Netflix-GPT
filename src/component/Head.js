@@ -69,9 +69,9 @@ import { addLanguage } from "../utils/configSlice";
       const isSearchTrue=useSelector((store)=>(store.gpt.searchToggle));
       console.log(isSearchTrue,"tureeeeeeeeeeee");
 
-    return (<div className='absolute w-1/2 md:w-screen px-8 py-2 bg-gradient-to-b from-black  flex  flex-row  md:justify-between'>
+    return (<div className='absolute w-1/2 md:w-screen md:px-8 md:py-2 bg-gradient-to-b from-black  flex  flex-row  md:justify-between'>
        <img
-       className=' md:h-[100px]  md:w-[150px]  md:ml-[150px] z-20'
+       className='pr-1 h-12 md:h-[100px]  md:w-[150px]  md:ml-[150px] z-20'
         src={LOGO}
         alt="logo"
        
@@ -84,7 +84,7 @@ import { addLanguage } from "../utils/configSlice";
          &&
       (<div className=" flex  gap-2  ">
        {
-        isSearchTrue &&  <select className="px-4 mx-2 py-2 bg-gray-600 text-white " onChange={handleLanguageSearch}>
+        isSearchTrue &&  <select className=" md:px-4 md:mx-2 md:py-2 bg-gray-600 text-white " onChange={handleLanguageSearch}>
         {SUPPORTED_LANGUAGE.map((lan)=><option key={lan.indentifier} value={lan.indentifier} >{lan.name}</option>)}
       </select>
        }
