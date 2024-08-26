@@ -13,7 +13,7 @@ const MainContainer = () => {
      console.log("second");
 
   return (
-    <div>
+    <div className=''>
       <VideoTitle title={original_title} overview={overview}/>
       <VideoBackground id={id}/>
     </div>

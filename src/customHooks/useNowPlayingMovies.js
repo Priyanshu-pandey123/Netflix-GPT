@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 
 const useNowPlayingMovies=()=>{
-
+    console.log('hello')
     const dispatch=useDispatch();
     const getNowPlayingMovie= async()=>{
      const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1',API_OPTION);

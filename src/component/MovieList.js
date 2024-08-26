@@ -11,7 +11,7 @@ return (
 
         <h1 className='text-3xl font-bold text-white'>{title}</h1>
 
-        <div className='flex overflow-x-scroll'>          
+        <div className=' flex overflow-x-scroll'>          
             <div className='flex'>
             {
             movies.map((movie)=> (
